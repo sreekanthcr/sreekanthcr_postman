@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "c7f01e6f-640b-43fa-a275-7d72843b0e98",
+		"name": "My First API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Demo1",
+			"id": "b56605e0-ace7-4ed0-a136-019a3e7e4186",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://www.boredapi.com/api/activity"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0005855b-309c-40c0-a9d2-62c45391d07d",
+						"exec": [
+							"console.log(\"Just printing test message to console\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "2cb413d2-03d7-4857-8e85-6eb3c59ee768",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c0ef3199-d9d6-4ab2-8052-59d8c3bd7eba",
+						"exec": [
+							"pm.environment.set(\"FullName\",pm.variables.replaceIn('{{$randomFullName}}'));\r",
+							"pm.environment.set(\"JobTitle\",pm.variables.replaceIn('{{$randomJobTitle}}'));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c291f7a1-d034-4ac2-8002-d7524656ec2d",
+						"exec": [
+							"pm.test(\"Validating the status is 201\",function(){\r",
+							"   pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "1334d5dc-a374-4291-a8f1-c890923dbe67",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{FullName}}\",\r\n    \"job\": \"{{JobTitle}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"id": "1f5bae99-2004-4187-8f2b-3e4a6069174a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sreekanth CR\",\r\n    \"job\": \"Tester Updated\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users/289"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"id": "dbbf10d5-d56f-4915-ad49-1eaf99f0ad29",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://reqres.in/api/users/289"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "50fab78d-a612-407b-82d2-2de238f39404",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bb99f92e-6bd7-4c53-8270-759006daadda",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
