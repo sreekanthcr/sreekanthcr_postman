@@ -57,7 +57,8 @@
 							"value": "2"
 						}
 					]
-				}
+				},
+				"description": "\n### GET /api/users\n\nThis endpoint retrieves a list of users with pagination support.\n\n#### Request\n- Method: GET\n- URL: `https://reqres.in/api/users`\n- Parameters:\n    - `page` (number, optional): The page number for the user list.\n\n#### Response\n- Status: 200 OK\n- Headers:\n    - Content-Type: application/json\n- Body: \n    ```json\n    {\n        \"type\": \"object\",\n        \"properties\": {\n            \"page\": {\"type\": \"number\"},\n            \"per_page\": {\"type\": \"number\"},\n            \"total\": {\"type\": \"number\"},\n            \"total_pages\": {\"type\": \"number\"},\n            \"data\": {\n                \"type\": \"array\",\n                \"items\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                        \"id\": {\"type\": \"number\"},\n                        \"email\": {\"type\": \"string\"},\n                        \"first_name\": {\"type\": \"string\"},\n                        \"last_name\": {\"type\": \"string\"},\n                        \"avatar\": {\"type\": \"string\"}\n                    }\n                }\n            },\n            \"support\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"url\": {\"type\": \"string\"},\n                    \"text\": {\"type\": \"string\"}\n                }\n            }\n        }\n    }\n    ```\n"
 			},
 			"response": []
 		},
